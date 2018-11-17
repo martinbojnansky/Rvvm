@@ -38,16 +38,16 @@ export class Component<TViewModel extends ViewModel, TProps, TState>
         this.store.unsubscribe(this.observerId);
     }
 
-    bind<T>(prop: Observable<T>): T {
+    bind<T>(observable: Observable<T>): T {
         this.store.subscribe(new ViewModelObservableObserver(
-            prop.id, this.observerId, 
+            observable.id, this.observerId, 
             () => this.forceUpdate()
         ));
-        return prop.get();
+        return observable.get();
     }
 
-    change<T>(prop: Observable<T>, value: T) {
-        this.store.dispatch(createSetObservableAction(prop, value, this.observerId));
+    change<T>(observable: Observable<T>, value: T) {
+        this.store.dispatch(createSetObservableAction(observable, value, this.observerId));
     }
 
     applyChanges() {
