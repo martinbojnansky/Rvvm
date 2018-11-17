@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Store } from "./../store/store";
-import { Utils } from "./../utils/utils";
+import { IdUtils } from "./../utils/idUtils";
 import { Observable } from "../models/observable";
 import { createSetObservableAction } from "../actions/setObservableAction";
 import { ViewModelObservableObserver } from "../models/viewModelObservableObserver";
@@ -27,7 +27,7 @@ export class Component<TViewModel extends ViewModel, TProps, TState>
     constructor(props: TProps & ComponentProps) {
         super(props);
 
-        this.observerId = Utils.generateUuid();
+        this.observerId = IdUtils.uuid();
         
         this.bind = this.bind.bind(this);
         this.change = this.change.bind(this);
