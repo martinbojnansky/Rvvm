@@ -6,7 +6,8 @@ export const Reducer = (viewModel: ViewModel = new ViewModel(), action: Action) 
         case ActionTypes.SET_VIEWMODEL:
             break;
         case ActionTypes.SET_OBSERVABLE:
-            action.observable._set(action.value);
+            // @ts-ignore
+            action.observable.set(action.value);
             break;
         case ActionTypes.APPLY_CHANGES:
             break;
